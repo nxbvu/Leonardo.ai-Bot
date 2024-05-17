@@ -1,7 +1,7 @@
 # Leonardo.ai-Bot
 An Automation Script for leonardo.ai, it can create Accounts, and scrape the generated Pictures. This is good for Bulk Creation.
 
-1.Download the files
+1.Download the files in Releases
 2.Download the chromedriver.exe of your chrome version (https://googlechromelabs.github.io/chrome-for-testing/#stable)
 3.Put all files in one folder
 4.Go into pictures.py and set ur download path
