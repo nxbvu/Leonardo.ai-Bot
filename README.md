@@ -1,6 +1,6 @@
 # Leonardo.ai Automation Bot
 
-## IMPORTANT READ -> [LICENSE AGREEMENT](https://github.com/KernFerm/Leonardo-bot/blob/main/LICENSE_AGREEMENT%20)
+## IMPORTANT READ -> [LICENSE AGREEMENT](https://github.com/KernFerm/Leonardo-bot/blob/main/LICENSE-AGREEMENT)
 
 An automation script for Leonardo.ai that can create accounts and scrape generated pictures, ideal for bulk creation.
 
