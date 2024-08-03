@@ -16,15 +16,25 @@ An automation script for Leonardo.ai that can create accounts and scrape generat
 4. **Set Download Path:**
    - Open `pictures.py` and set your desired download path in the variable `download_path`.
 
-5. **Create Accounts:**
+5. **Install Dependencies:**
+   - Create and activate a virtual environment (optional but recommended):
+     ```
+     python -m venv venv
+     source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+     ```
+   - Install the required Python packages using `requirements.txt`:
+     ```
+     pip install -r requirements.txt
+     ```
+
+6. **Create Accounts:**
    - Run `main.py` to start account creation.
    - Adjust values like `quit` and `thread_count` to suit your preferences.
 
-6. **Account Storage:**
-   - `login.txt` will store all newly created accounts.
-   - `tr.txt` will contain all used accounts.
+7. **Generate and Download Pictures:**
+   - Run `pictures.py`, input your prompt, and the script will log in, generate pictures, and download them to your specified path.
 
-7. **Access Used Accounts:**
+8. **Access Used Accounts:**
    - Run `take.py` to retrieve a used account.
 
 ## File Descriptions
@@ -44,23 +54,22 @@ An automation script for Leonardo.ai that can create accounts and scrape generat
 
 ## Dependencies
 
-## Ensure you have the following dependencies installed:
+Ensure you have the following dependencies installed:
 
 - Selenium
-- Requests
 
-## You can install them using pip:
+These dependencies are listed in the `requirements.txt` file. You can install them using:
 
 ```
-pip install selenium requests
+pip install -r requirements.txt
 ```
 
-## Running the Scripts
+# Running the Scripts
 
 ## Set up your environment:
 
 Make sure all necessary files and the ChromeDriver are in the same folder.
-Update the download_path in pictures.py.
+Update the download_path in `pictures.py`.
 
 ## Create accounts:
 
