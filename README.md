@@ -94,3 +94,16 @@ python main.py
 python pictures.py
 python take.py
 ```
+
+# Important NotesEducational Purposes Only: 
+
+This script is provided for educational purposes to demonstrate web automation using Selenium. Please use it responsibly and in compliance with the terms of service of any website you interact with.
+
+**Permission Required:** Always seek permission from website owners before running automation scripts on their sites.
+
+**Ethical Considerations:** Be mindful of ethical considerations and avoid disrupting website functionality or user experience.
+
+
+# **Disclaimer**
+
+The authors of this script are not responsible for any misuse of the code. Ensure that your usage complies with all relevant laws and terms of service.
