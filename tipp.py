@@ -18,9 +18,13 @@ def replace_characters_script():
         arguments[0]();
     '''
 
-def replace_characters(driver):
-    while True:
-        driver.execute_async_script(replace_characters_script())
+def replace_characters(driver, stop_event):
+    while not stop_event.is_set():
+        try:
+            driver.execute_async_script(replace_characters_script())
+        except Exception as e:
+            print(f"Error in replace_characters: {e}")
+        time.sleep(1)  # Add a small delay to prevent excessive CPU usage
 
 # WebDriver setup
 chrome_options = webdriver.ChromeOptions()
@@ -29,8 +33,11 @@ driver = webdriver.Chrome(service=service_object, options=chrome_options)
 driver.get("https://www.tippenakademie.de/schreibtrainer/tipp-test")
 time.sleep(5)  # Wait for the page to fully load
 
+# Event to signal the thread to stop
+stop_event = threading.Event()
+
 # Start a separate thread for replacing characters
-thread = threading.Thread(target=replace_characters, args=(driver,))
+thread = threading.Thread(target=replace_characters, args=(driver, stop_event))
 thread.start()
 
 # Continue with the main thread
@@ -41,5 +48,7 @@ try:
 except KeyboardInterrupt:
     print("Program interrupted by user")
 finally:
-    # Make sure to quit the driver when the program is interrupted
+    # Signal the thread to stop and wait for it to finish
+    stop_event.set()
+    thread.join()
     driver.quit()
