@@ -95,7 +95,9 @@ python pictures.py
 python take.py
 ```
 
-# Important NotesEducational Purposes Only: 
+# Important Notes 
+
+## Educational Purposes Only: 
 
 This script is provided for educational purposes to demonstrate web automation using Selenium. Please use it responsibly and in compliance with the terms of service of any website you interact with.
 
