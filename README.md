@@ -42,13 +42,13 @@ An automation script for Leonardo.ai that can create accounts and scrape generat
 
 ## File Descriptions
 
-- **main.py**: This script is responsible for creating new accounts on Leonardo.ai. It uses a temporary email service to receive confirmation codes and complete the registration process.
+- **main.py**: This script is responsible for creating new accounts on `Leonardo.ai`. It uses a temporary email service to receive confirmation codes and complete the registration process.
 
 - **pictures.py**: This script logs into Leonardo.ai using the credentials from `login.txt`, generates pictures based on a given prompt, and downloads the images to the specified download path.
 
 - **take.py**: This script retrieves the last used account from `tr.txt` and prints the account details.
 
-- **tipp.py**: A utility script that sets up a WebDriver for a typing test website, replacing characters on the screen with 'w'. This script is not directly related to Leonardo.ai but is included for additional functionality.
+- **tipp.py**: A utility script that sets up a `WebDriver` for a typing test website, replacing characters on the screen with `'w'`. This script is not directly related to `Leonardo.ai` but is included for additional functionality.
 
 ## Notes
 
