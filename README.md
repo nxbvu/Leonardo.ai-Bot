@@ -22,8 +22,8 @@ An automation script for Leonardo.ai that can create accounts and scrape generat
      python -m venv venv
      # Linux , MacOs
      source venv/bin/activate
-     # On Windows,
-     use `venv\Scripts\activate`
+     # Windows
+     venv\Scripts\activate
      ```
    - Install the required Python packages using `requirements.txt`:
      ```
