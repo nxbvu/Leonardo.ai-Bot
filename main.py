@@ -42,16 +42,16 @@ def run_code():
     try:
         service_object = Service(CHROME_DRIVER_PATH)
         driver = webdriver.Chrome(service=service_object, options=chrome_options)
-        
+
         # Create temporary email
         driver.get("https://www.mohmal.com/de/create/random")
         time.sleep(10)
         driver.get("https://www.mohmal.com/de/create/random")
         email = driver.find_element(By.XPATH, '//div[@class="email"]').get_attribute("data-email")
-        
+
         driver.execute_script("window.open('', '_blank');")
         driver.switch_to.window(driver.window_handles[-1])
-        
+
         # Sign up on Leonardo.ai
         driver.get("https://app.leonardo.ai/auth/login")
         time.sleep(0.5)
@@ -63,31 +63,31 @@ def run_code():
         time.sleep(0.5)
         driver.find_element(By.ID, 'password').send_keys(PASSWORD)
         driver.find_element(By.XPATH, '//button[@class="chakra-button css-1qqz7y3" and contains(text(), "Sign up")]').click()
-        
+
         driver.switch_to.window(driver.window_handles[0])
         time.sleep(0.5)
 
         # Click Einwilligen button
         click_einwilligen(driver)
-        
+
         # Refresh email for verification code
         for _ in range(3):
             driver.find_element(By.CLASS_NAME, 'svg-inline--fa.fa-arrows-rotate').click()
             time.sleep(1)
-        
+
         driver.find_element(By.XPATH, '//a[contains(text(), "Your verification code")]').click()
         time.sleep(2)
-        
+
         # Retrieve confirmation code from iframe
         iframe_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'iframe')))
         full_url = urljoin("https://www.mohmal.com", iframe_element.get_attribute('src'))
         driver.execute_script("window.open('', '_blank');")
         driver.switch_to.window(driver.window_handles[-4])
         driver.get(full_url)
-        
+
         body_text = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'body'))).text
         confirmation_code = body_text[body_text.find("Your confirmation code is") + len("Your confirmation code is"):].strip() if "Your confirmation code is" in body_text else None
-        
+
         if confirmation_code:
             driver.switch_to.window(driver.window_handles[2])
             time.sleep(0.2)
@@ -95,7 +95,7 @@ def run_code():
             time.sleep(0.5)
             driver.find_element(By.XPATH, '//button[@class="chakra-button css-1qqz7y3" and contains(text(), "Confirm account")]').click()
             time.sleep(5)
-            
+
             # Generate username
             input_element = driver.find_element(By.XPATH, '//input[@placeholder="myawesomeusername" and @class="chakra-input css-13s0zy"]')
             random_string = generate_random_string(10)
@@ -113,9 +113,9 @@ def run_code():
             time.sleep(1)
 
             # Save account details
-            logging.info("Passwort: hahalol12345!AHA")
+            logging.info("Account created successfully.")
             with open("login.txt", "a") as login_file:
-                login_file.write(email + "\n")
+                login_file.write(f"Email: {email}, Password: {PASSWORD}\n")
             with open("tr.txt", "a") as login_file:
                 login_file.write(email + "\n")
             time.sleep(6)
