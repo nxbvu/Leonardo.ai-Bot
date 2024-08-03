@@ -74,7 +74,9 @@ Run `pictures.py`, input your prompt, and the script will log in, generate pictu
 
 Run `take.py` to get details of the last used account.
 
-# How to run 
+# How to run
+```
 python main.py
 python pictures.py
 python take.py
+```
