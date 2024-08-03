@@ -8,13 +8,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 from urllib.parse import urljoin
 import random
 import string
+import logging
 
 # Configuration
-q = 4
-crx_file_path = "./adb.crx"
+CRX_FILE_PATH = "./adb.crx"
+CHROME_DRIVER_PATH = './chromedriver.exe'
+THREAD_COUNT = 7
+QUIT_COUNT = 30
+PASSWORD = "hahalol12345!AHA"
+
+# Setup logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 chrome_options = webdriver.ChromeOptions()
 # chrome_options.add_argument("--headless")
-chrome_options.add_extension(crx_file_path)
+chrome_options.add_extension(CRX_FILE_PATH)
 
 def generate_random_string(length):
     letters = string.ascii_letters
@@ -27,11 +35,12 @@ def click_einwilligen(driver):
         )
         einwilligen_button.click()
     except Exception as e:
-        print(f"Error clicking Einwilligen button: {e}")
+        logging.error(f"Error clicking Einwilligen button: {e}")
 
 def run_code():
+    driver = None
     try:
-        service_object = Service('./chromedriver.exe')
+        service_object = Service(CHROME_DRIVER_PATH)
         driver = webdriver.Chrome(service=service_object, options=chrome_options)
         
         # Create temporary email
@@ -52,7 +61,7 @@ def run_code():
         time.sleep(1)
         driver.find_element(By.ID, 'email').send_keys(email)
         time.sleep(0.5)
-        driver.find_element(By.ID, 'password').send_keys("hahalol12345!AHA")
+        driver.find_element(By.ID, 'password').send_keys(PASSWORD)
         driver.find_element(By.XPATH, '//button[@class="chakra-button css-1qqz7y3" and contains(text(), "Sign up")]').click()
         
         driver.switch_to.window(driver.window_handles[0])
@@ -104,28 +113,31 @@ def run_code():
             time.sleep(1)
 
             # Save account details
-            print("Passwort: hahalol12345!AHA")
+            logging.info("Passwort: hahalol12345!AHA")
             with open("login.txt", "a") as login_file:
                 login_file.write(email + "\n")
             with open("tr.txt", "a") as login_file:
                 login_file.write(email + "\n")
             time.sleep(6)
     except Exception as e:
-        print(f"Error in run_code: {e}")
+        logging.error(f"Error in run_code: {e}")
     finally:
-        driver.quit()
+        if driver:
+            driver.quit()
 
-quit = 30
-for alpha in range(quit):
-    thread_count = 7
-    threads = []
+def main():
+    for _ in range(QUIT_COUNT):
+        threads = []
 
-    # Create and start threads
-    for _ in range(thread_count):
-        thread = threading.Thread(target=run_code)
-        thread.start()
-        threads.append(thread)
+        # Create and start threads
+        for _ in range(THREAD_COUNT):
+            thread = threading.Thread(target=run_code)
+            thread.start()
+            threads.append(thread)
 
-    # Wait for all threads to complete
-    for thread in threads:
-        thread.join()
+        # Wait for all threads to complete
+        for thread in threads:
+            thread.join()
+
+if __name__ == "__main__":
+    main()
