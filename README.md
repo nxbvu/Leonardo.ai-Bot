@@ -6,8 +6,7 @@ An automation script for Leonardo.ai that can create accounts and scrape generat
 
 ## Instructions
 
-1. **Download Files:**
-   - Access the files in the [Releases](https://github.com/nxbvu/Leonardo.ai-Bot/releases) section.
+1. **Click Green button file upper `right hand corner`. click download `zip` file.
 
 2. **Download ChromeDriver:**
    - Obtain the ChromeDriver corresponding to your Chrome version [here](https://googlechromelabs.github.io/chrome-for-testing/#stable).
