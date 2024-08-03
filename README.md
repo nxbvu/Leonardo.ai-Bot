@@ -75,6 +75,8 @@ Run `pictures.py`, input your prompt, and the script will log in, generate pictu
 Run `take.py` to get details of the last used account.
 
 # How to run
+- open `cmd.exe` non admin mode. `cd` file location. click enter then type below:
+
 ```
 python main.py
 python pictures.py
