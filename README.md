@@ -64,15 +64,15 @@ Update the download_path in pictures.py.
 
 ## Create accounts:
 
-Run main.py to start creating accounts. Adjust the quit and thread_count values as needed.
+Run `main.py` to start creating accounts. Adjust the quit and thread_count values as needed.
 
 ## Generate and download pictures:
 
-Run pictures.py, input your prompt, and the script will log in, generate pictures, and download them to your specified path.
+Run `pictures.py`, input your prompt, and the script will log in, generate pictures, and download them to your specified path.
 
 ## Retrieve used accounts:
 
-Run take.py to get details of the last used account.
+Run `take.py` to get details of the last used account.
 
 # How to run 
 python main.py
