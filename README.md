@@ -11,3 +11,4 @@ An Automation Script for leonardo.ai, it can create Accounts, and scrape the gen
 8.You can get errors, if leonardo.ai changes the class names and so on
 9.I wan't to say, that i am not using it, bcs i have a guilty conscience, and its better to just buy the premium for unlimited use
 
+NOTE: Doesn't work anymore-they patched that
